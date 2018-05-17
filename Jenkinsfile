@@ -12,7 +12,7 @@ node('Ubuntu16_x86'){
         stage('Test01'){
         //测试部署脚本
             echo "Tesing ......"
-            sh 'test01.sh'
+            //sh 'test01.sh'
         }
         stage('Delivery'){
         //交付部署脚本
