@@ -4,12 +4,11 @@ node('Ubuntu16_x86'){
              checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/PajonYang/LinuxCI']]]) 
              workspace =pwd()
             }
-        stage('Deploy'){
+        stage('Build'){
         //执行部署脚本
-            echo "Deploying ......"
-            echo "`pwd`"
+            echo "Building ......"
         }
-        stage('Test01'){
+        stage('Unit Testing'){
         //测试部署脚本
             echo "Tesing ......"
             //sh 'test01.sh'
