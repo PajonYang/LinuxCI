@@ -16,20 +16,20 @@ node('Ubuntu16_x86'){
         stage('Delivery'){
         //交付部署脚本
             echo "Delivery ......" 
-        }   
-        post {
-                always {
-                        echo 'This will always run!'
-                }
-                success {
-                        echo 'This will run only if successful!'
-                }
-                failure {
-                        echo 'This will run only if failed!'
-                }
-                changed {
-                        ehco 'This will run only if the state of Pipeline has changed!'
-                }
-        }
+        }          
 }
+post {
+        always {
+                echo 'This will always run!'
+        }
+        success {
+                echo 'This will run only if successful!'
+        }
+        failure {
+                echo 'This will run only if failed!'
+        }
+        changed {
+                ehco 'This will run only if the state of Pipeline has changed!'
+        }
+      }
 
