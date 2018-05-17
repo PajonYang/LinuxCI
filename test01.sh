@@ -3,7 +3,8 @@ gcc -o add Add.c
 c= ./add 1 2
 if c=3
 then
-        echo -e "\nVerify add 1+2=3, pass"
+        echo "Verify add 1+2=3, pass"
 else
-        echo -e "\ntest fail"
+        echo "test fail"
+        echo "exit -1"
 fi
