@@ -17,4 +17,5 @@ node('Ubuntu16_x86'){
         //交付部署脚本
             echo "Delivery ......" 
         }
+        cucumber fileIncludePattern: '**/*.json', sortingMethod: 'ALPHABETICAL'
 }
