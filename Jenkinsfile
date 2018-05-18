@@ -1,35 +1,47 @@
-def workspace;
-node('Ubuntu16_x86'){
-        stage('Get clone'){
-             checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/PajonYang/LinuxCI']]]) 
-             workspace =pwd()
-            }
-        stage('Build'){
-        //执行部署脚本
-            echo "Building ......"
-        }
-        stage('Unit Testing'){
-        //测试部署脚本
-            echo "Tesing ......"
-            //sh 'test01.sh'
-        }
-        stage('Delivery'){
-        //交付部署脚本
-            echo "Delivery ......" 
-        }          
-}
-post {
-        always {
-                echo 'This will always run!'
-        }
-        success {
-                echo 'This will run only if successful!'
-        }
-        failure {
-                echo 'This will run only if failed!'
-        }
-        changed {
-                ehco 'This will run only if the state of Pipeline has changed!'
-        }
-      }
+#!groovy
 
+node('Ubuntu16_x86'){
+	currentBuild.result = "SUCCESS"
+	try{
+		stage('Get clone'){
+		   checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/PajonYang/LinuxCI']]])
+		}
+		stage('Build'){
+
+			echo "Building ......" 
+		}
+		stage('Unit Testing'){
+
+			echo "Testing ......"      
+		}
+		stage('Delivery'){
+
+			echo "Delivery ......" 
+		}
+		stage('Error shown'){
+
+			try{
+				sh 'exit 1'
+			}
+			catch (exc) {
+				echo 'Something failed'
+			throw exc
+			}
+		}
+		stage('Cleanup'){
+                echo 'cleanup'
+                //sh 'rm -rf Jenkins_Pipeline'
+
+                mail	to: 'yyyyy@yyyy.com' 		
+                        subject: 'project build successful',
+                        body: 'project build successful'	                                   
+       }
+	}
+	catch (err){
+		currentBuild.result = "FAILURE"
+			mail	to: 'yyyyy@yyyy.com' 		
+                                subject: 'project build failed',
+                                body: 'project build error is here: ${env.BUILD_URL}'
+		throw err
+	}
+}
