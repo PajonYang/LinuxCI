@@ -32,16 +32,16 @@ node('Ubuntu16_x86'){
                 echo 'cleanup'
                 //sh 'rm -rf Jenkins_Pipeline'
 
-                mail	to: 'v-peiy@microsoft.com' 		
-                        subject: 'project build successful',
-                        body: 'project build successful'	                                   
+                //mail	to: 'v-peiy@microsoft.com' 		
+                        //subject: 'project build successful',
+                        //body: 'project build successful'	                                   
        		}
 	}
 	catch (err){
 		currentBuild.result = "FAILURE"
-			mail	to: 'v-peiy@microsoft.com' 		
-                                subject: 'project build failed',
-                                body: 'project build error is here: ${env.BUILD_URL}'
+			//mail	to: 'v-peiy@microsoft.com' 		
+                                //subject: 'project build failed',
+                                //body: 'project build error is here: ${env.BUILD_URL}'
 		throw err
 	}
 }
