@@ -21,7 +21,7 @@ node('Ubuntu16_x86'){
 		stage('Error shown'){
 
 			try{
-				sh 'exit 1'
+				//sh 'exit 1'
 			}
 			catch (exc) {
 				echo 'Something failed'
