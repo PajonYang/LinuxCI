@@ -33,15 +33,15 @@ node('Ubuntu16_x86'){
                 //sh 'rm -rf Jenkins_Pipeline'
 
                 mail	to: 'v-peiy@microsoft.com', 		
-                        subject: 'project build successful',
-                        body: 'project build successful'	                                   
+                        subject: 'Jenkins mail - Build successful',
+                        body: 'Project build successful - Sent from Jenkins'	                                   
        		}
 	}
 	catch (err){
 		currentBuild.result = "FAILURE"
 			mail	to: 'v-peiy@microsoft.com', 		
-                                subject: 'project build failed',
-                                body: 'project build error is here: ${env.BUILD_URL}'
+                                subject: 'Jenkins mail - Build fail',
+                                body: 'project build error is here: ${env.BUILD_URL} - Sent from Jenkins''
 		throw err
 	}
 }
