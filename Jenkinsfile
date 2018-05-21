@@ -41,7 +41,7 @@ node('Ubuntu16_x86'){
 		currentBuild.result = "FAILURE"
 			mail	to: 'v-peiy@microsoft.com', 		
                                 subject: 'Jenkins mail - Build fail',
-                                body: 'project build error is here: ${env.BUILD_URL} - Sent from Jenkins''
+                                body: 'project build error is here: ${env.BUILD_URL} - Sent from Jenkins'
 		throw err
 	}
 }
