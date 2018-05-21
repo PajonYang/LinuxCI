@@ -1,6 +1,6 @@
 #!groovy
 
-node('Ubuntu16_x86'){
+node('ub16x86'){
 	currentBuild.result = "SUCCESS"
 	try{
 		stage('Get clone'){
