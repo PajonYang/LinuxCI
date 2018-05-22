@@ -9,6 +9,7 @@ node('ub16x86'){
 		stage('Build'){
 
 			echo "Building ......" 
+			sh 'tar -zcvf /root/workspace/jenkins.tar /root/workspace/Jenkins_pipe'
 		}
 		stage('Unit Testing'){
 
@@ -18,7 +19,7 @@ node('ub16x86'){
 
 			echo "Delivery ......" 
 			sh 'ssh 10.229.171.75 mkdir /root/share/$BUILD_NUMBER'
-			sh 'scp /root/workspace/Jenkins_pipe ssh 10.229.171.75:/root/share/$BUILD_NUMBER'
+			sh 'scp /root/workspace/jenkins.tar ssh 10.229.171.75:/root/share/$BUILD_NUMBER'
 			sh 'scp 10.229.171.75 ls -al /root/share/$BUILD_NUMBER'
 			//sshPublisher(publishers: [sshPublisherDesc(configName: 'Cent7x64_02-SSH', transfers: [sshTransfer(excludes: '', execCommand: 'ls -al  /root/', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '/root/share', remoteDirectorySDF: false, removePrefix: '/root/workspace', sourceFiles: '/root/workspace/Jenkins_pipe')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
 		}
