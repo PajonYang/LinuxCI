@@ -14,8 +14,11 @@ node('ub16x86'){
 		}
 		stage('Unit Testing'){
 
-			echo "Testing ......" 
-			sh 'chmod 777 /root/workspace/Jenkins_pipe/test01.sh & sh /root/workspace/Jenkins_pipe/test01.sh'
+			echo "Testing ......"
+			echo "what happend when pass"
+			sh 'chmod 777 /root/workspace/Jenkins_pipe/UnitTest/test01.sh & sh /root/workspace/Jenkins_pipe/UnitTest/test01.sh'
+			echo "what happend when fail"
+			sh 'chmod 777 /root/workspace/Jenkins_pipe/UnitTest/test02.sh & sh /root/workspace/Jenkins_pipe/UnitTest/test02.sh'
 		}
 		stage('Delivery'){
 
