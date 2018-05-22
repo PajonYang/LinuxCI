@@ -7,21 +7,18 @@ node('ub16x86'){
 		   checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/PajonYang/LinuxCI']]])
 		}
 		stage('Build'){
-
 			echo "Building ......" 
 			echo "Packing compression"
 			sh 'tar -zcvf /root/workspace/jenkins.tar /root/workspace/Jenkins_pipe'
 		}
 		stage('Unit Testing'){
-
 			echo "Testing ......"
 			echo "what happend when pass"
 			sh 'chmod 777 /root/workspace/Jenkins_pipe/test01.sh & sh /root/workspace/Jenkins_pipe/test01.sh'
-			//echo "what happend when fail"		
-			//sh 'chmod 777 /root/workspace/Jenkins_pipe/test02.sh & sh /root/workspace/Jenkins_pipe/test02.sh'				
+			echo "what happend when fail"		
+			sh 'chmod 777 /root/workspace/Jenkins_pipe/test02.sh & sh /root/workspace/Jenkins_pipe/test02.sh'				
 		}
 		stage('Delivery'){
-
 			echo "Delivery ......" 
 			sh 'ssh 10.217.249.76 mkdir -p /root/share/$BUILD_NUMBER'
 			sh 'scp /root/workspace/jenkins.tar root@10.217.249.76:/root/share/$BUILD_NUMBER'
@@ -44,14 +41,15 @@ node('ub16x86'){
 
                 mail	to: 'v-peiy@microsoft.com', 		
                         subject: 'Jenkins mail - Build successful',
-                        body: 'Project build successful - Sent from Jenkins'	                                   
+                        body: 'Project build successful #$BUILD_NUMBER - Sent from Jenkins'	                                   
        		}
 	}
 	catch (err){
 		currentBuild.result = "FAILURE"
 			mail	to: 'v-peiy@microsoft.com', 		
                                 subject: 'Jenkins mail - Build fail',
-                                body: 'project build error is here: ${env.BUILD_URL} - Sent from Jenkins'
+				body: 'project build error #$BUILD_NUMBER - Sent from Jenkins'
+                                //body: 'project build error is here: ${env.BUILD_URL} - Sent from Jenkins'
 		throw err
 	}
 }
