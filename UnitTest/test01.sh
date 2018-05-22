@@ -1,5 +1,5 @@
 #! /bin/bash
-cd ./UnitTest
+cd /root/workspace/Jenkins_pipe/UnitTest
 gcc -o add Add.c
 c= ./add 1 2
 if $c=3
