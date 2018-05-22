@@ -2,9 +2,9 @@
 gcc -o add Add.c
 c= ./add 1 2
 
-if $c==3
+if [ $c -eq 3 ]
 then
-        echo "Verify add 1+2=3, pass"
+        echo "test pass"
 else
         echo "test fail"
         exit -1
