@@ -18,7 +18,13 @@ node('ub16x86'){
 			echo "what happend when pass"
 			sh 'chmod 777 /root/workspace/Jenkins_pipe/UnitTest/test01.sh & sh /root/workspace/Jenkins_pipe/UnitTest/test01.sh'
 			echo "what happend when fail"
+			try{
 			sh 'chmod 777 /root/workspace/Jenkins_pipe/UnitTest/test02.sh & sh /root/workspace/Jenkins_pipe/UnitTest/test02.sh'
+			}
+			catch (exc) {
+				echo 'Something failed'
+			throw exc
+			}			
 		}
 		stage('Delivery'){
 
