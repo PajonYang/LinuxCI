@@ -1,5 +1,5 @@
 #! /bin/bash
-gcc -o ./add Add.c
+gcc -o add Add.c
 c= ./add 1 2
 if $c=3
 then
