@@ -14,7 +14,8 @@ node('ub16x86'){
 		}
 		stage('Unit Testing'){
 
-			echo "Testing ......"      
+			echo "Testing ......" 
+			sh '/root/workspace/Jenkins_pipe/test01.sh'
 		}
 		stage('Delivery'){
 
