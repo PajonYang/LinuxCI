@@ -38,9 +38,9 @@ node('ub16x86'){
                 echo 'cleanup'
                 //sh 'rm -rf Jenkins_Pipeline'
 
-                //mail	to: 'v-peiy@microsoft.com', 		
-                        //subject: 'Jenkins mail - Build successful',
-                        //body: 'Project build successful - Sent from Jenkins'	                                   
+                mail	to: 'v-peiy@microsoft.com', 		
+                        subject: 'Jenkins mail - Build successful',
+                        body: 'Project build successful - Sent from Jenkins'	                                   
        		}
 	}
 	catch (err){
