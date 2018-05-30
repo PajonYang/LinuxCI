@@ -24,23 +24,14 @@ node('ub16x86'){
 			sh 'scp /root/workspace/jenkins.tar root@10.217.249.76:/root/share/$BUILD_NUMBER'
 			sh 'ssh 10.217.249.76 ls -al /root/share/$BUILD_NUMBER'
 			//sshPublisher(publishers: [sshPublisherDesc(configName: 'Cent7x64_02-SSH', transfers: [sshTransfer(excludes: '', execCommand: 'ls -al  /root/', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '/root/share', remoteDirectorySDF: false, removePrefix: '/root/workspace', sourceFiles: '/root/workspace/Jenkins_pipe')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
-		}
-		stage('Error shown'){
-
-			try{
-				//sh 'exit 1'
-			}
-			catch (exc) {
-				echo 'Something failed'
-			throw exc
-			}
-		}
+		}			
+				
 		stage('Cleanup'){
                 echo 'cleanup'
                 //sh 'rm -rf Jenkins_Pipeline'
 
                 mail	to: 'v-peiy@microsoft.com', 		
-                        subject: 'Jenkins mail #$BUILD_NUMBER - Build successful',
+                        subject: 'Jenkins mail #`$BUILD_NUMBER` - Build successful',
                         body: 'Project build successful - Sent from Jenkins'	                                   
        		}
 	}
