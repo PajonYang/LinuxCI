@@ -33,7 +33,7 @@ node('ub16x86'){
                 //mail	to: 'v-peiy@microsoft.com', 		
                        // subject: $PROJECT_NAME - Build $BUILD_NUMBER - $BUILD_STATUS,
                         //body: $PROJECT_NAME - Build $BUILD_NUMBER - $BUILD_STATUS	
-		mail bcc: '', body: '$PROJECT_NAME - Build $BUILD_NUMBER - $BUILD_STATUS', cc: '', from: '', replyTo: '', subject: '$PROJECT_NAME - Build $BUILD_NUMBER - $BUILD_STATUS', to: 'v-peiy@microsoft.com'
+		emailext body: '''$PROJECT_NAME - Build $BUILD_NUMBER - $BUILD_STATUS:Check console output at $BUILD_URL to view the results.''', subject: '$PROJECT_NAME - Build $BUILD_NUMBER - $BUILD_STATUS', to: 'v-peiy@microsoft.com'
        		}
 	}
 	catch (err){
