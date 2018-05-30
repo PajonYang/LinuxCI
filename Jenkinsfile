@@ -15,8 +15,8 @@ node('ub16x86'){
 			echo "Testing ......"
 			echo "what happend when pass"
 			sh 'chmod 777 /root/workspace/Jenkins_pipe/test01.sh & sh /root/workspace/Jenkins_pipe/test01.sh'
-			echo "what happend when fail"		
-			sh 'chmod 777 /root/workspace/Jenkins_pipe/test02.sh & sh /root/workspace/Jenkins_pipe/test02.sh'				
+			//echo "what happend when fail"		
+			//sh 'chmod 777 /root/workspace/Jenkins_pipe/test02.sh & sh /root/workspace/Jenkins_pipe/test02.sh'				
 		}
 		stage('Delivery'){
 			echo "Delivery ......" 
@@ -29,18 +29,15 @@ node('ub16x86'){
 		stage('Cleanup'){
                 echo 'cleanup'
                 //sh 'rm -rf Jenkins_Pipeline'
-
-                //mail	to: 'v-peiy@microsoft.com', 		
-                       // subject: $PROJECT_NAME - Build $BUILD_NUMBER - $BUILD_STATUS,
-                        //body: $PROJECT_NAME - Build $BUILD_NUMBER - $BUILD_STATUS	
-		emailext body: '''$PROJECT_NAME - Build $BUILD_NUMBER - $BUILD_STATUS:
-Check console output at $BUILD_URL to view the results.''', subject: '$PROJECT_NAME - Build $BUILD_NUMBER - $BUILD_STATUS', to: 'v-peiy@microsoft.com'
+             	
+		emailext body: '''$PROJECT_NAME - Build #$BUILD_NUMBER - $BUILD_STATUS:
+Check console output at $BUILD_URL to view the results.''', subject: '$PROJECT_NAME - Build #$BUILD_NUMBER - $BUILD_STATUS', to: 'v-peiy@microsoft.com'
        		}
 	}
 	catch (err){
 		currentBuild.result = "FAILURE"
-			emailext body: '''$PROJECT_NAME - Build $BUILD_NUMBER - $BUILD_STATUS:
-Check console output at $BUILD_URL to view the results.''', subject: '$PROJECT_NAME - Build $BUILD_NUMBER - $BUILD_STATUS', to: 'v-peiy@microsoft.com'
+		emailext body: '''$PROJECT_NAME - Build #$BUILD_NUMBER - $BUILD_STATUS:
+Check console output at $BUILD_URL to view the results.''', subject: '$PROJECT_NAME - Build #$BUILD_NUMBER - $BUILD_STATUS', to: 'v-peiy@microsoft.com'
 		throw err
 	}
 }
