@@ -15,8 +15,8 @@ node('ub16x86'){
 			echo "Testing ......"
 			echo "what happend when pass"
 			sh 'chmod 777 /root/workspace/Jenkins_pipe/test01.sh & sh /root/workspace/Jenkins_pipe/test01.sh'
-			//echo "what happend when fail"		
-			//sh 'chmod 777 /root/workspace/Jenkins_pipe/test02.sh & sh /root/workspace/Jenkins_pipe/test02.sh'				
+			echo "what happend when fail"		
+			sh 'chmod 777 /root/workspace/Jenkins_pipe/test02.sh & sh /root/workspace/Jenkins_pipe/test02.sh'				
 		}
 		stage('Delivery'){
 			echo "Delivery ......" 
@@ -31,7 +31,7 @@ node('ub16x86'){
                 //sh 'rm -rf Jenkins_Pipeline'
 
                 mail	to: 'v-peiy@microsoft.com', 		
-                        subject: 'Jenkins mail #`$BUILD_NUMBER` - Build successful',
+                        subject: 'Jenkins mail - Build successful',
                         body: 'Project build successful - Sent from Jenkins'	                                   
        		}
 	}
@@ -39,7 +39,7 @@ node('ub16x86'){
 		currentBuild.result = "FAILURE"
 			mail	to: 'v-peiy@microsoft.com', 		
                                 subject: 'Jenkins mail - Build fail',
-				body: 'project build error #$BUILD_NUMBER - Sent from Jenkins'
+				body: 'project build error - Sent from Jenkins'
                                 //body: 'project build error is here: ${env.BUILD_URL} - Sent from Jenkins'
 		throw err
 	}
