@@ -15,8 +15,8 @@ node('ub16x86'){
 			echo "Testing ......"
 			echo "what happend when pass"
 			sh 'chmod 777 /root/workspace/Jenkins_pipe/test01.sh & sh /root/workspace/Jenkins_pipe/test01.sh'
-			echo "what happend when fail"		
-			sh 'chmod 777 /root/workspace/Jenkins_pipe/test02.sh & sh /root/workspace/Jenkins_pipe/test02.sh'				
+			//echo "what happend when fail"		
+			//sh 'chmod 777 /root/workspace/Jenkins_pipe/test02.sh & sh /root/workspace/Jenkins_pipe/test02.sh'				
 		}
 		stage('Delivery'){
 			echo "Delivery ......" 
@@ -31,8 +31,8 @@ node('ub16x86'){
                 //sh 'rm -rf Jenkins_Pipeline'
 
                 mail	to: 'v-peiy@microsoft.com', 		
-                        subject: 'Jenkins mail - Build successful',
-                        body: 'Project build successful - Sent from Jenkins'	                                   
+                        subject: $PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS!,
+                        body: $PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS:	                                   
        		}
 	}
 	catch (err){
