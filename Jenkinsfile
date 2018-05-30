@@ -31,8 +31,8 @@ node('ub16x86'){
                 //sh 'rm -rf Jenkins_Pipeline'
 
                 mail	to: 'v-peiy@microsoft.com', 		
-                        subject: $PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS!,
-                        body: $PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS:	                                   
+                        subject: $PROJECT_NAME - Build $BUILD_NUMBER - $BUILD_STATUS!,
+                        body: $PROJECT_NAME - Build $BUILD_NUMBER - $BUILD_STATUS!:	                                   
        		}
 	}
 	catch (err){
