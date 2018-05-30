@@ -5,6 +5,6 @@ c=`./add 1 2`
 if [ "$c" = "4" ];then
         echo "test pass"
 else 
-        echo "error"
+        echo "error message: Something failed"
         exit 1
 fi
