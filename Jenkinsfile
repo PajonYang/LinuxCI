@@ -30,9 +30,10 @@ node('ub16x86'){
                 echo 'cleanup'
                 //sh 'rm -rf Jenkins_Pipeline'
 
-                mail	to: 'v-peiy@microsoft.com', 		
-                        subject: $PROJECT_NAME - Build $BUILD_NUMBER - $BUILD_STATUS,
-                        body: $PROJECT_NAME - Build $BUILD_NUMBER - $BUILD_STATUS	                                   
+                //mail	to: 'v-peiy@microsoft.com', 		
+                       // subject: $PROJECT_NAME - Build $BUILD_NUMBER - $BUILD_STATUS,
+                        //body: $PROJECT_NAME - Build $BUILD_NUMBER - $BUILD_STATUS	
+		mail bcc: '', body: '$PROJECT_NAME - Build $BUILD_NUMBER - $BUILD_STATUS', cc: '', from: '', replyTo: '', subject: '$PROJECT_NAME - Build $BUILD_NUMBER - $BUILD_STATUS', to: 'v-peiy@microsoft.com'
        		}
 	}
 	catch (err){
