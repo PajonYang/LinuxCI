@@ -40,8 +40,8 @@ node('ub16x86'){
                 //sh 'rm -rf Jenkins_Pipeline'
 
                 mail	to: 'v-peiy@microsoft.com', 		
-                        subject: 'Jenkins mail - Build successful',
-                        body: 'Project build successful #$BUILD_NUMBER - Sent from Jenkins'	                                   
+                        subject: 'Jenkins mail #$BUILD_NUMBER - Build successful',
+                        body: 'Project build successful - Sent from Jenkins'	                                   
        		}
 	}
 	catch (err){
