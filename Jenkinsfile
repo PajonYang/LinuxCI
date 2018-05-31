@@ -20,9 +20,9 @@ node('ub16x86'){
 		}
 		stage('Delivery'){
 			echo "Delivery ......" 
-			sh 'ssh 10.217.249.76 mkdir -p /root/share/#$BUILD_NUMBER'
-			sh 'scp /root/workspace/jenkins.tar root@10.217.249.76:/root/share/$BUILD_NUMBER'
-			sh 'ssh 10.217.249.76 ls -al /root/share/#$BUILD_NUMBER'
+			sh 'ssh 10.217.249.76 mkdir -p /root/share/Build#$BUILD_NUMBER'
+			sh 'scp /root/workspace/jenkins.tar root@10.217.249.76:/root/share/Build#$BUILD_NUMBER'
+			sh 'ssh 10.217.249.76 ls -al /root/share/Build#$BUILD_NUMBER'
 			//sshPublisher(publishers: [sshPublisherDesc(configName: 'Cent7x64_02-SSH', transfers: [sshTransfer(excludes: '', execCommand: 'ls -al  /root/', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '/root/share', remoteDirectorySDF: false, removePrefix: '/root/workspace', sourceFiles: '/root/workspace/Jenkins_pipe')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
 		}			
 				
