@@ -6,5 +6,5 @@ if [ "$c" = "4" ];then
         echo "test pass"
 else 
         echo "error message: Something failed"
-        exit 0
+        exit 1
 fi
